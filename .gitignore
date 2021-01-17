@@ -1,0 +1,5 @@
+*.swp
+.env
+.config
+hkdb*
+mycrypto
