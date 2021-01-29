@@ -9,6 +9,7 @@ This is a terminal-based CryptoCurrency `(BTC and ETH only for now)` Portfolio T
 ## CHANGELOG
 
 - 01/16/2021 - first commit
+- 01/28/2021 - Decoupled code base and added optional show portfolio feature
 
 ## PLATFORMS
 - Linux: Tested on Pop! OS 20.04 LTS
