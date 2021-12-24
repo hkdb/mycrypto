@@ -20,11 +20,12 @@ type status struct {
 }
 
 type price struct {
-	Price    float64 `json:"price"`
-	Change1H float64 `json:"percent_change_1h"`
-	Change1D float64 `json:"percent_change_24h"`
-	Change7D float64 `json:"percent_change_7d"`
-	Last     string  `json:"last_updated"`
+	Price     float64 `json:"price"`
+	Change1H  float64 `json:"percent_change_1h"`
+	Change1D  float64 `json:"percent_change_24h"`
+	Change7D  float64 `json:"percent_change_7d"`
+	MarketCap float64 `json:"market_cap"`
+	Last      string  `json:"last_updated"`
 }
 
 type quote struct {
@@ -41,16 +42,31 @@ type coin struct {
 	Quote       quote  `json:"quote"`
 }
 
-var c = "BTC,ETH"
+//////////////////////////////////
+//////// Editable Variables///////
+//////////////////////////////////
 
-type Data struct {
-	BTC coin `json:"BTC"`
-	ETH coin `json:"ETH"`
-}
+var cost = 0.00
+var current = 0.00
+var change = 0.00
+var btc = 0.00
+var bcap = 0.00
+var scap = 0.00
+var btcr = 0.00
+var bcapr = 0.00
+var scapr = 0.00
+
+var c string
+
+var delim = ","
+var c_array []string
+
+//////////////////////////////////
+//////////////////////////////////
 
 type Response struct {
-	Status status `json:"status"`
-	Data   Data   `json:"data"`
+	Status status          `json:"status"`
+	Data   map[string]coin `json:"data,omitempty"`
 }
 
 type MyCoins struct {
@@ -62,12 +78,6 @@ type MyCoins struct {
 	Amount string
 	Wallet string
 }
-
-// define text color
-var colorReset = "\033[0m"
-var colorYellow = "\033[33m"
-var colorGreen = "\033[92m"
-var colorRed = "\033[91m"
 
 // Get CoinMarketCap Data
 func getPrices(api string) Response {
@@ -109,7 +119,6 @@ func getPrices(api string) Response {
 
 }
 
-// Show CoinMarketCap Data
 func showPrice(c coin) {
 
 	fmt.Print("Coin: ")

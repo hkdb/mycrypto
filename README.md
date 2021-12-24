@@ -4,12 +4,31 @@ maintained by: hkdb@3df.io
 ![ScreenShot](readme/screenshot.png)
 
 ## SUMMARY
-This is a terminal-based CryptoCurrency `(BTC and ETH only for now)` Portfolio Tracker that was made to track crypto assets across multiple wallets and platforms locally (as opposed to a cloud service). It grabs the latest data from CoinMarketCap.com via API and then calculates those numbers against the users existing portfolio which is manually filled-in by the user in CSV format.
+This is a terminal-based CryptoCurrency Portfolio Tracker that was made to track crypto assets across multiple wallets and platforms locally (as opposed to a cloud service). It grabs the latest data from CoinMarketCap.com via API and then calculates those numbers against the users existing portfolio which is manually filled-in by the user in CSV format. This tracker supports multiple portfolios.
+
+## FEATURES
+
+- Check price, 1h change, 24h change, 7d change, and last updated of all your coins
+- Check price, 1h change, 24h change, 7d change, and last updated of a specific coin
+- Check price, 1h change, 24h change, 7d change, and last updated and your coin holdings, avg buy/sell price, total cost, current value, change in $, and change in % of all your holdings separately and collectively. It will also calculate your holdings percentage between BTC, Big Caps (> $10 billion), and Small Caps (< $10 billion)
+- All of the above bullet point with transaction history
+- Check price, 1h change, 24h change, 7d change, and last updated and your coin holdings, avg buy/sell price, total cost, current value, change in $, and change in % of all your holdings for a specific coin
+- All of the above bullet point with transaction history
+- Track multiple portfolios
 
 ## CHANGELOG
 
-- 01/16/2021 - first commit
+- 12/24/2021 - Multiple features - v0.1.0
+   - Changed variable type from struct to map to store api responses for scalability
+   - settings.conf to set what coins to query CMC for data
+   - Layout improvements
+   - Multiple portfolios support
+   - Check price data only
+   - Check price data for specific coin only
+   - Removed show price data prior to showing portfolio data
+   - Random small improvements
 - 01/28/2021 - Decoupled code base and added optional show portfolio feature
+- 01/16/2021 - first commit
 
 ## PLATFORMS
 - Linux: Tested on Pop! OS 20.04 LTS
@@ -26,11 +45,14 @@ This is a terminal-based CryptoCurrency `(BTC and ETH only for now)` Portfolio T
    ```
    git clone https://github.com/hkdb/mycrypto.git
    ``` 
-2. Enter into the repo directory, create a .config file based on .config.sample, and fill-in the NAME variable with your name without spaces and CMC_API variable with your own CoinMarketCap.com API key
+2. Enter into the repo directory, create a settings.conf file based on settings.conf-sample, and fill-in all the variables accordingly. Each variable has associating comments to help you figure out exactly what you need to fill in.
    
-   ```
-   NAME = NameWithNoSpaces 
-   CMC_API = CoinMarketCapApiKey
+   ``` 
+   CMC_API = Your own CMC API key
+   COINS = The coins in your portfolio separated by commas
+   PORTFOLIO = The name of your default portfolio. ie. hodl, trade, or whatever you want to name it.
+   PORTFOLIO_PATH =  The path to your portfolios so that you can put it anywhere you want.
+   
    ```
 3. Execute the following in terminal:
    
@@ -43,7 +65,7 @@ This is a terminal-based CryptoCurrency `(BTC and ETH only for now)` Portfolio T
    Creates a symlink to binary in ~/.local/bin
    ```
 
-4. Create <your name>-btc.csv and <your name>-eth.csv based on sample-btc.csv and sample-eth.csv respectively and fill-in all of your transactions
+4. Create <PORTFOLIO>-<coin ticker>.csv (ie hodl-btc.csv) based on sample-btc.csv and fill-in all of your transactions in the portfolios folder
    
    ```
    Date,Coin,Cost,Fee,Total,Amount,Wallet
@@ -51,11 +73,36 @@ This is a terminal-based CryptoCurrency `(BTC and ETH only for now)` Portfolio T
    ```
 
 ## USAGE
+
 Execute the following command from the terminal:
 
 ```
 mycrypto
 ```
+For more granular output, check the help menu:
+
+```
+mycrypto -h
+```
+
+```
+Usage of mycrypto:
+  -p string
+    	USAGE: -p <portfolio>
+    	
+    	       (default "none")
+  -q string
+    	USAGE: -q <coin symbol>
+    	
+    	       (default "none")
+  -s string
+    	USAGE: -s <option>:
+    			t: transactions
+    			p: price
+    	
+    	       (default "none")
+```
+
 
 ## BUILD
 To build from source, execute the following from with in the repo directory:

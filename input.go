@@ -5,6 +5,7 @@ import (
 	"log"
 )
 
+// Response confirmation handling
 func confirm() bool {
 	var response string
 	_, err := fmt.Scanln(&response)
