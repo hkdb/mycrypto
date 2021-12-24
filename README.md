@@ -18,6 +18,7 @@ This is a terminal-based CryptoCurrency Portfolio Tracker that was made to track
 
 ## CHANGELOG
 
+- 12/24/2021 - Fixed terms
 - 12/24/2021 - Multiple features - v0.1.0
    - Changed variable type from struct to map to store api responses for scalability
    - settings.conf to set what coins to query CMC for data
