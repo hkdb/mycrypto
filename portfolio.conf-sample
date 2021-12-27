@@ -1,0 +1,12 @@
+##
+## MyCrypto - portfolio.conf
+##
+## This is where you define your default portfolio and add new coins to query CMC
+##
+
+# Default Portfolio. csv files should be named with <portfolio>-<symbol>.csv ~ ie hodl-btc.csv and trade-btc.csv
+PORTFOLIO = hkdb
+
+# Coins in your Portfolio Separated by Commas
+COINS = BTC,ETH,ADA,AKT,ALEPH,ALGO
+

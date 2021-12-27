@@ -53,6 +53,20 @@ func main() {
 		fmt.Print(e)
 	}
 
+	cpath := os.Getenv("PORTFOLIO_CONF_PATH")
+	if cpath == "" {
+		cpath = path
+	}
+
+	// Load portfolio.conf
+	ce := godotenv.Load(cpath + "/portfolio.conf")
+	if ce != nil {
+		fmt.Print("\n\n")
+		fmt.Println(ce)
+		fmt.Println(string(colorRed), "\nCan't find portfolio.conf. Double check your settings.conf and ensure that a syntax error free portfolio.conf file is placed in the location as specified...\n\n", string(colorReset))
+		os.Exit(0)
+	}
+
 	// get path of CSVs
 	csv_path := os.Getenv("PORTFOLIO_PATH")
 	if csv_path == "" {

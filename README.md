@@ -18,6 +18,7 @@ This is a terminal-based CryptoCurrency Portfolio Tracker that was made to track
 
 ## CHANGELOG
 
+- 12/26/2021 - Added portfolio.conf and custom path to it in settings.conf to define default portfolio and coins
 - 12/24/2021 - Fixed terms
 - 12/24/2021 - Multiple features - v0.1.0
    - Changed variable type from struct to map to store api responses for scalability
@@ -50,12 +51,18 @@ This is a terminal-based CryptoCurrency Portfolio Tracker that was made to track
    
    ``` 
    CMC_API = Your own CMC API key
+   PORTFOLIO_PATH =  The path to your portfolios so that you can put it anywhere you want.
+   PORTFOLIO_CONF_PATH = The path to your portfolio.conf so you can set your default portfolio name and the coins to query CMC. I personally like using the same path as PORTFOLIO_PATH.
+   ```
+3. Make sure you create the paths that you specified and the CSV files of the coins you want to track based on sample-btc.csv
+
+4. Create a portfolio.conf based on portfolio.conf-sample, and fill-in all the variables accordingly. Each variable has associating comments to help you figure out exactly what you need to fill in.
+
+   ```
    COINS = The coins in your portfolio separated by commas
    PORTFOLIO = The name of your default portfolio. ie. hodl, trade, or whatever you want to name it.
-   PORTFOLIO_PATH =  The path to your portfolios so that you can put it anywhere you want.
-   
    ```
-3. Execute the following in terminal:
+5. Execute the following in terminal:
    
    ```
    ./install.sh
@@ -66,12 +73,17 @@ This is a terminal-based CryptoCurrency Portfolio Tracker that was made to track
    Creates a symlink to binary in ~/.local/bin
    ```
 
-4. Create <PORTFOLIO>-<coin ticker>.csv (ie hodl-btc.csv) based on sample-btc.csv and fill-in all of your transactions in the portfolios folder
+6. Create <PORTFOLIO>-<coin ticker>.csv (ie hodl-btc.csv) based on sample-btc.csv and fill-in all of your transactions in the portfolios folder
    
    ```
    Date,Coin,Cost,Fee,Total,Amount,Wallet
    12/04/2020,BTC,100.00 ,0.59,10.59,0.0030633,Electrum
    ```
+
+## ADDING NEW COINS
+
+1. Add the coin to portfolio.conf
+2. Add a CSV file for the coin (ie. hodl-btc.csv)
 
 ## USAGE
 

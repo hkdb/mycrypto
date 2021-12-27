@@ -5,9 +5,6 @@
 # CoinMarketCap API Key
 CMC_API = 
 
-# Coins in your Portfolio Separated by Commas
-COINS = BTC,ETH,ADA,AKT,ALEPH,ALGO
-
 # Default Portfolio. csv files should be named with <portfolio>-<symbol>.csv ~ ie hodl-btc.csv and trade-btc.csv
 PORTFOLIO = 
 PORTFOLIO_PATH = 
